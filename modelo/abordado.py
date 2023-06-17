@@ -1,11 +1,14 @@
-from modelo.abordagem import Abordagem
+
 
 class Abordado:
-    def __init__(self, nome, apelido, rg):
+
+    def __init__(self,
+                 nome: str,
+                 apelido: str,
+                 rg: str,
+                 foto: str = None):
+
         self.nome = nome
         self.apelido = apelido
-        self.rg = int()
-        self.abordagem = Abordagem()
-
-    def foto(self):
-        print('FOTO')
+        self.rg = rg
+        self.foto = foto

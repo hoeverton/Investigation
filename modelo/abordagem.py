@@ -1,27 +1,23 @@
 
-from modelo.abordado import Abordado
+from typing import List
+
+from .abordado import Abordado
+from .veiculo_abordado import VeiculoAbordado
+from .boletim_ocorrencia import BoletimOcorrencia
+from .local import Local
+
 
 class Abordagem:
 
-    def __init__(self):
-        self.cidade = input('Digite Cidade:')
-        self.bairro =  None
-        self.rua = None
-        self.numeral = None
-        self.data = None
-        self.acompanhado = self.acompanhado()
+    def __init__(self,
+                 data: str,
+                 local: Local,
+                 abordados: List[Abordado],
+                 veiculo: VeiculoAbordado,
+                 boletim_ocorrencia: BoletimOcorrencia = None):
 
-    def acompanhado(self):
-        self.contador = True
-
-        while self.contador == True:
-
-            self.acompanhado = input('Estava sozinho na hora da abordagem ? [S/N]')
-            if self.acompanhado == 'n':
-                self.envolvido = Abordado(self.rg)
-            self.contador = False
-            
-
-      
-
-
+        self.local = local
+        self.data = data
+        self.abordados = abordados
+        self.veiculo = veiculo
+        self.boletim_ocorrencia = boletim_ocorrencia

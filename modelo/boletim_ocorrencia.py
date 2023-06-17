@@ -1,9 +1,10 @@
 
-class BO:
-    def __init__(self,n,natureza):
-        self.nºBo = int
-        self.natureza = natureza
-        self.obs = {}
-        #self.pessoas_relacionadas = PessoasRelacionadas()  
-        
 
+class BoletimOcorrencia:
+
+    def __init__(self,
+                 numero: str,
+                 natureza: str):
+
+        self.numero = numero
+        self.natureza = natureza
