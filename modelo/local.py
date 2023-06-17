@@ -7,6 +7,7 @@ class Local:
                  bairro: str,
                  rua: str,
                  numeral: str):
+
         self.cidade = cidade
         self.bairro = bairro
         self.rua = rua

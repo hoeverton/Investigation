@@ -1,5 +1,6 @@
 
 from typing import List
+from datetime import datetime
 
 from .abordado import Abordado
 from .veiculo_abordado import VeiculoAbordado
@@ -10,10 +11,10 @@ from .local import Local
 class Abordagem:
 
     def __init__(self,
-                 data: str,
+                 data: datetime,
                  local: Local,
                  abordados: List[Abordado],
-                 veiculo: VeiculoAbordado,
+                 veiculo: VeiculoAbordado = None,
                  boletim_ocorrencia: BoletimOcorrencia = None):
 
         self.local = local
