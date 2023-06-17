@@ -1,5 +1,5 @@
 
-from abordado.class_Abordado import Abordado
+from modelo.abordado import Abordado
 
 class Abordagem:
 
@@ -9,9 +9,9 @@ class Abordagem:
         self.rua = None
         self.numeral = None
         self.data = None
-       # self.acompanhado = self.acompanhado()
+        self.acompanhado = self.acompanhado()
 
-    '''def acompanhado(self):
+    def acompanhado(self):
         self.contador = True
 
         while self.contador == True:
@@ -19,7 +19,7 @@ class Abordagem:
             self.acompanhado = input('Estava sozinho na hora da abordagem ? [S/N]')
             if self.acompanhado == 'n':
                 self.envolvido = Abordado(self.rg)
-            self.contador = False   ''' 
+            self.contador = False
             
 
       

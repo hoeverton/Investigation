@@ -1,4 +1,4 @@
-from abordagem.class_Abordagem import Abordagem
+from modelo.abordagem import Abordagem
 
 class Abordado:
     def __init__(self, nome, apelido, rg):
