@@ -1,4 +1,4 @@
-from ..modelo.abordagem import Abordado
+from modelo.abordagem import Abordado
 
 
 class AbordadoControle:

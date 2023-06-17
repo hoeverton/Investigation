@@ -1,7 +1,5 @@
-from modelo.abordado import Abordado
+from view_cli.cli import CLI
 
 
-eto = Abordado('Hoeverton','Eto',8740835)
-eto.foto()
-print(eto.abordagem.cidade)
-#eto.abordagem
+if __name__ == "__main__":
+    CLI.boas_vindas()

@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import List
 
-from ..modelo.abordagem import (Abordagem,
+from modelo.abordagem import (Abordagem,
                                 Local,
                                 Abordado,
                                 VeiculoAbordado,
@@ -19,11 +19,11 @@ class AbordagemControle:
               rua: str,
               numeral: str,
               abordados: List[Abordado],
-              veiculo_cor: str,
-              veiculo_modelo: str,
-              veiculo_placa: str,
-              veiculo_proprietario: str,
-              veiculo_tipo: str,
+              veiculo_cor: str = None,
+              veiculo_modelo: str = None,
+              veiculo_placa: str = None,
+              veiculo_proprietario: str = None,
+              veiculo_tipo: str = None,
               bo_numero: str = None,
               bo_natureza: str = None) -> Abordagem:
 
@@ -32,16 +32,22 @@ class AbordagemControle:
             assert bo_natureza is not None, "bo_natureza deve ser especificado"
             bo = BoletimOcorrencia(numero=bo_numero, natureza=bo_natureza)
 
+        veiculo = None
+        if veiculo_placa is not None:
+            assert veiculo_cor is not None, "veiculo_cor deve ser especificado"
+            assert veiculo_tipo is not None, "veiculo_tipo deve ser especificado"
+            assert veiculo_proprietario is not None, "veiculo_proprietario deve ser especificado"
+            assert veiculo_modelo is not None, "veiculo_modelo deve ser especificado"
+
+            veiculo = VeiculoAbordado(cor=veiculo_cor,
+                                      modelo=veiculo_modelo,
+                                      placa=veiculo_placa,
+                                      proprietario=veiculo_proprietario,
+                                      tipo=veiculo_tipo)
         local = Local(cidade=cidade,
                       bairro=bairro,
                       rua=rua,
                       numeral=numeral)
-
-        veiculo = VeiculoAbordado(cor=veiculo_cor,
-                                  modelo=veiculo_modelo,
-                                  placa=veiculo_placa,
-                                  proprietario=veiculo_proprietario,
-                                  tipo=veiculo_tipo)
 
         return Abordagem(data=datetime.now(),
                          local=local,
