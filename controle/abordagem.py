@@ -47,6 +47,7 @@ class AbordagemControle:
         local = Local(cidade=cidade,
                       bairro=bairro,
                       rua=rua,
+                      
                       numeral=numeral)
 
         return Abordagem(data=datetime.now(),
