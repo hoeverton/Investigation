@@ -9,12 +9,14 @@ class VeiculoAbordado:
                  tipo: str,
                  placa: str,
                  modelo: str,
+                 ano:str,
                  cor: str,
                  proprietario: Union[str, Abordado]):
 
         self.tipo = tipo
         self.placa = placa
         self.modelo = modelo
+        self.ano = ano
         self.cor = cor
         self.proprietario = proprietario
         self.obs = []

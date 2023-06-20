@@ -22,6 +22,7 @@ class AbordagemControle:
               veiculo_cor: str = None,
               veiculo_modelo: str = None,
               veiculo_placa: str = None,
+              veiculo_ano: str = None,
               veiculo_proprietario: str = None,
               veiculo_tipo: str = None,
               bo_numero: str = None,
@@ -36,17 +37,20 @@ class AbordagemControle:
         if veiculo_placa is not None:
             assert veiculo_cor is not None, "veiculo_cor deve ser especificado"
             assert veiculo_tipo is not None, "veiculo_tipo deve ser especificado"
+            assert veiculo_ano is not None, "veiculo_ano deve ser especificado"
             assert veiculo_proprietario is not None, "veiculo_proprietario deve ser especificado"
             assert veiculo_modelo is not None, "veiculo_modelo deve ser especificado"
 
             veiculo = VeiculoAbordado(cor=veiculo_cor,
                                       modelo=veiculo_modelo,
                                       placa=veiculo_placa,
+                                      ano =ano,
                                       proprietario=veiculo_proprietario,
                                       tipo=veiculo_tipo)
         local = Local(cidade=cidade,
                       bairro=bairro,
                       rua=rua,
+                      
                       numeral=numeral)
 
         return Abordagem(data=datetime.now(),
