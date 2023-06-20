@@ -39,7 +39,7 @@ class CLI:
             veiculo_props = {"veiculo_cor": input("cor: "),
                              "veiculo_modelo": input("modelo: "),
                              "veiculo_placa":  input("placa: "),
-                             "veiculo_ano":  input("ano: "),
+                             "veiculo_ano":  input("ano: "),# add input
                              "veiculo_proprietario":  input("proprietario: "),
                              "veiculo_tipo":  input("tipo: ")}
 

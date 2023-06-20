@@ -1,7 +1,7 @@
-from .veiculo_abordado import VeiculoAbordado
+from modelo.veiculo_abordado import VeiculoAbordado
 
 
-class VeiculoAbordado_Controle:
+class VeiculoAbordadoControle:
 
     def __init__(self):
         pass
@@ -12,7 +12,7 @@ class VeiculoAbordado_Controle:
                  modelo: str,
                  ano:str,
                  cor: str,
-                 proprietario: Union[str, Abordado]) ->VeiculoAbordado:
+                 proprietario: Union[str, Abordado]) ->VeiculoAbordado: #
 
         return VeiculoAbordado(placa = placa,
                             modelo = modelo,

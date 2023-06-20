@@ -12,7 +12,7 @@ class LocalControle:
               rua:str,
               numeral:str)->Local:
 
-       return  Local(cidade = cidade,
+       return  Local(cidade = cidade,   #
                      apelido = apelido,
                      rg = rg,
                      foto = foto)        

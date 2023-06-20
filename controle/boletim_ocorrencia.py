@@ -1,13 +1,13 @@
 from modelo.boletim_ocorrencia import BoletimOcorrencia
 
 
-class BoletimOcorrencia_Controle:
+class BoletimOcorrenciaControle:
 
     def __init__(self):
         pass
 
     @staticmethod
-    def criar(numero:str, natureza:str) ->BoletimOcorrencia:
+    def criar(numero:str, natureza:str) ->BoletimOcorrencia: 
 
         return BoletimOcorrencia(numero=numero,
                         natureza=natureza )
