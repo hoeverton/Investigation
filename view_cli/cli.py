@@ -33,12 +33,13 @@ class CLI:
             tem_abordado: str = input("Tem mais abordado? [s/n]")
             tem_abordado: bool = (tem_abordado.lower() == 's')
 
-        tem_veiculo = input("tem veiculo na abordagem? [s/n]")
+        tem_veiculo = input("Tem veiculo na abordagem? [s/n]")
         veiculo_props = {}
         if tem_veiculo.lower() == 's':
             veiculo_props = {"veiculo_cor": input("cor: "),
                              "veiculo_modelo": input("modelo: "),
                              "veiculo_placa":  input("placa: "),
+                             "veiculo_ano":  input("ano: "),
                              "veiculo_proprietario":  input("proprietario: "),
                              "veiculo_tipo":  input("tipo: ")}
 
