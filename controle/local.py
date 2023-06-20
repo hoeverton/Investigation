@@ -1,5 +1,8 @@
 from modelo.local import Local
+
+
 class LocalControle:
+
      def __init__(self):
         pass
 
