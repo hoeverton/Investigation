@@ -11,6 +11,9 @@ class VeiculoAbordado_Controle:
                  modelo: str,
                  ano:str,
                  cor: str,
-                 proprietario: Union[str, Abordado]):
+                 proprietario: Union[str, Abordado]) ->veiculo:
 
-        return 
+        return veiculo(placa = placa,
+                            modelo = modelo,
+                            ano = ano,cor =cor,
+                            proprietario = proprietario)
