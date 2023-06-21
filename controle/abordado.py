@@ -1,5 +1,6 @@
 from modelo.abordagem import Abordado
-from banco_de_dados.mockdb import MockDB
+from banco_de_dados import Database
+
 
 class AbordadoControle:
 
@@ -14,14 +15,14 @@ class AbordadoControle:
                         rg=rg,
                         foto=foto)
 
-        MockDB.upinsert(abordado)
+        Database.upinsert(abordado)
         return abordado
 
     @staticmethod
     def remover(rg: str):
-        abordados = MockDB.lista(Abordado)
-        abordado = [ a for a in abordados if a.rg == rg][0]
-        MockDB.remove(abordado)
+        abordados = Database.lista(Abordado)
+        abordado = [a for a in abordados if a.rg == rg][0]
+        Database.remove(abordado)
 
     @staticmethod
     def atualizar(rg: str,
