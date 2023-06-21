@@ -15,13 +15,12 @@ class AbordadoControle:
                         rg=rg,
                         foto=foto)
 
-        Database.upinsert(abordado)
+        Database.atualizar(abordado)
         return abordado
 
     @staticmethod
     def remover(rg: str):
-        abordados = Database.lista(Abordado)
-        abordado = [a for a in abordados if a.rg == rg][0]
+        abordado = Database.lista(Abordado, f"rg == {rg}")[0]
         Database.remove(abordado)
 
     @staticmethod
@@ -29,4 +28,10 @@ class AbordadoControle:
                 nome: str,
                 apelido: str,
                 foto: str = None):
-        pass
+
+        instancia: Abordado = Database.lista(Abordado, f"rg == {rg}")[0]
+        instancia.nome = nome
+        instancia.apelido = apelido
+        instancia.foto = foto
+
+        Database.atualizar(instancia)
