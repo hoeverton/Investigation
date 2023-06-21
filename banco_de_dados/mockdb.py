@@ -35,7 +35,7 @@ class MockDB:
         if filtro is not None:
             filtro_decomposto = re.match(r"([a-z_]*) (==|>=|<=|<|>){1} ([a-z_]*)", filtro).groups()
 
-            lambda_filtro = lambda x: eval(f"{x.getattr(filtro_decomposto[0])} {filtro_decomposto[1]} {filtro_decomposto[2]}")
+            lambda_filtro = lambda x: eval(f"'{x.getattr(filtro_decomposto[0])}' {filtro_decomposto[1]} '{filtro_decomposto[2]}'")
             return list(filter(lambda_filtro, memoria))
         return memoria
 
