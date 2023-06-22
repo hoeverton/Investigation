@@ -20,7 +20,7 @@ class AbordadoControle:
 
     @staticmethod
     def remover(rg: str):
-        abordado = Database.listar(Abordado, f"rg == {rg}")[0]
+        abordado = Database.listar(Abordado, f"rg == '{rg}'")[0]
         Database.remover(abordado)
 
     @staticmethod
@@ -29,7 +29,7 @@ class AbordadoControle:
                 apelido: str,
                 foto: str = None):
 
-        abordado: Abordado = Database.listar(Abordado, f"rg == {rg}")[0]
+        abordado: Abordado = Database.listar(Abordado, f"rg == '{rg}'")[0]
         abordado.nome = nome
         abordado.apelido = apelido
         abordado.foto = foto
