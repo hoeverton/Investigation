@@ -40,7 +40,7 @@ class MockDB:
 
     @staticmethod
     def _constroi_filtro(filtro: str):
-        padrao_regex = r"([a-z_]*) (==|>=|<=|<|>){1} ([a-z_]*)"
+        padrao_regex = r"([a-z_]*) (==|>=|<=|<|>){1} [\'|\"]([0-9:A-Z\-_\.,a-z_ ]*)[\'|\"]"
         parametro, operador, valor = re.match(padrao_regex,
                                               filtro).groups()
 
