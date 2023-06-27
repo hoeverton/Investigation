@@ -1,5 +1,6 @@
 from datetime import datetime
 from typing import List
+from banco_de_dados import Database
 
 from modelo.abordagem import (Abordagem,
                                 Local,
@@ -52,12 +53,16 @@ class AbordagemControle:
                       rua=rua,
                       
                       numeral=numeral)
-
-        return Abordagem(data=datetime.now(),
+        #alterado variavel
+        Abordagem(data=datetime.now(),
                          local=local,
                          abordados=abordados,
                          veiculo=veiculo,
                          boletim_ocorrencia=bo)
+        #add Database
+        Database.atualizar(Abordagem)
+        return Abordagem
+
 
     @staticmethod
     def atualizar():
