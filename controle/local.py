@@ -1,5 +1,5 @@
 from modelo.local import Local
-
+from banco_de_dados import Database
 
 class LocalControle:
 
@@ -12,7 +12,29 @@ class LocalControle:
               rua:str,
               numeral:str)->Local:
 
-       return  Local(cidade = cidade,   #
-                     apelido = apelido,
-                     rg = rg,
-                     foto = foto)        
+       local = Local(cidade = cidade,   #
+                     bairro = bairro,
+                     rua = rua,
+                     numeral = numeral) 
+
+       Database.atualizar(local)
+
+     @staticmethod
+     def remover(rua:str):
+
+      local = Database.listar(local, f"rua == '{rua}'")[0]  
+      Database.remover(local)
+
+     @staticmethod
+     def atualizar(cidade = cidade,   #
+                    bairro = bairro,
+                    rua = rua,
+                    numeral = numeral): 
+         
+         local: Local = Database.listar(Abordado, f"rua == '{rua}'")[0]
+         local.cidade = cidade
+         local.bairro = bairro
+         local.rua = rua
+         local.numeral = numeral
+
+         Database.atualizar(local)

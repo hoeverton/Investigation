@@ -10,13 +10,25 @@ class BoletimOcorrenciaControle:
     @staticmethod
     def criar(numero:str, natureza:str) ->BoletimOcorrencia: 
 
-        BoletimOcorrencia(numero=numero,
-                        natureza=natureza )
+        boletimOcorrencia = BoletimOcorrencia(numero=numero,
+                                              natureza=natureza )
 
-        Database.atualizar(BoletimOcorrencia)
+        Database.atualizar(boletimOcorrencia)
 
-        return BoletimOcorrencia
+        return boletimOcorrencia
 
     @staticmethod
     def remover(numero:str):
-        pass     
+        boletimOcorrencia = Database.listar(BoletimOcorrencia, f"numero == '{numero}'")[0]
+        Database.remover(boletimOcorrencia)
+
+    @staticmethod
+    def atualizar(numero:str, natureza:str):
+        
+        boletimOcorrencia: BoletimOcorrencia = Database.listar(BoletimOcorrencia, f"numero == '{numero}'")[0]
+        boletimOcorrencia.numero = numero
+        boletimOcorrencia.natureza = natureza
+
+        Database.atualizar(boletimOcorrencia)
+
+        
