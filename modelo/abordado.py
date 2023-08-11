@@ -12,3 +12,11 @@ class Abordado:
         self.apelido = apelido
         self.rg = rg
         self.foto = foto
+
+    def __dict__(self):
+        return {
+            "nome": self.nome,
+            "apelido": self.apelido,
+            "rg": self.rg,
+            "foto": self.foto
+        }

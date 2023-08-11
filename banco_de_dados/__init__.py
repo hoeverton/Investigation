@@ -1,4 +1,4 @@
-from .mockdb import MockDB
+from banco_de_dados.conectores.graph import GraphDB
 
-Database = MockDB
+Database = GraphDB
 

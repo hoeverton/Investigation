@@ -7,7 +7,6 @@ class BoletimOcorrenciaControle:
         pass
 
     @staticmethod
-    def criar(numero:str, natureza:str) ->BoletimOcorrencia: 
-
+    def criar(numero: str, natureza: str) -> BoletimOcorrencia:
         return BoletimOcorrencia(numero=numero,
-                        natureza=natureza )
+                                 natureza=natureza)

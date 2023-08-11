@@ -8,13 +8,13 @@ class VeiculoAbordadoControle:
 
     @staticmethod
     def criar(tipo: str,
-                 placa: str,
-                 modelo: str,
-                 ano:str,
-                 cor: str,
-                 proprietario: Union[str, Abordado]) ->VeiculoAbordado: #
+              placa: str,
+              modelo: str,
+              ano: str,
+              cor: str,
+              proprietario: Union[str, Abordado]) -> VeiculoAbordado:  #
 
-        return VeiculoAbordado(placa = placa,
-                            modelo = modelo,
-                            ano = ano,cor =cor,
-                            proprietario = proprietario)
+        return VeiculoAbordado(placa=placa,
+                               modelo=modelo,
+                               ano=ano, cor=cor,
+                               proprietario=proprietario)

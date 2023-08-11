@@ -2,10 +2,10 @@ from datetime import datetime
 from typing import List
 
 from modelo.abordagem import (Abordagem,
-                                Local,
-                                Abordado,
-                                VeiculoAbordado,
-                                BoletimOcorrencia)
+                              Local,
+                              Abordado,
+                              VeiculoAbordado,
+                              BoletimOcorrencia)
 
 
 class AbordagemControle:
@@ -44,13 +44,12 @@ class AbordagemControle:
             veiculo = VeiculoAbordado(cor=veiculo_cor,
                                       modelo=veiculo_modelo,
                                       placa=veiculo_placa,
-                                      ano =ano,
+                                      ano=veiculo_ano,
                                       proprietario=veiculo_proprietario,
                                       tipo=veiculo_tipo)
         local = Local(cidade=cidade,
                       bairro=bairro,
                       rua=rua,
-                      
                       numeral=numeral)
 
         return Abordagem(data=datetime.now(),
