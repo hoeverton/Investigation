@@ -14,7 +14,7 @@ class AbordadoControle:
                             rg=rg,
                             foto=foto)
 
-        Database.atualizar(abordado)
+        # Database.atualizar(abordado)
         return abordado
 
     @staticmethod

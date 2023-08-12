@@ -6,9 +6,11 @@ from .abordado import Abordado
 from .veiculo_abordado import VeiculoAbordado
 from .boletim_ocorrencia import BoletimOcorrencia
 from .local import Local
+from . import Modelo
 
 
-class Abordagem:
+class Abordagem(Modelo):
+    PARAMETROS_DE_IDENTIDADE = ["data", "local"]
 
     def __init__(self,
                  data: datetime,

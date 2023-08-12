@@ -1,6 +1,8 @@
+from . import Modelo
 
 
-class Local:
+class Local(Modelo):
+    PARAMETROS_DE_IDENTIDADE = ["rua", "bairro", "cidade", "numeral"]
 
     def __init__(self,
                  cidade: str,

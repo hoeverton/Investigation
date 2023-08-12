@@ -1,6 +1,9 @@
 
+from . import Modelo
 
-class Abordado:
+
+class Abordado(Modelo):
+    PARAMETROS_DE_IDENTIDADE = ["rg"]
 
     def __init__(self,
                  nome: str,
@@ -13,10 +16,3 @@ class Abordado:
         self.rg = rg
         self.foto = foto
 
-    def __dict__(self):
-        return {
-            "nome": self.nome,
-            "apelido": self.apelido,
-            "rg": self.rg,
-            "foto": self.foto
-        }

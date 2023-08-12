@@ -1,6 +1,8 @@
+from . import Modelo
 
 
-class BoletimOcorrencia:
+class BoletimOcorrencia(Modelo):
+    PARAMETROS_DE_IDENTIDADE = ["numero"]
 
     def __init__(self,
                  numero: str,

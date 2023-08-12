@@ -28,7 +28,7 @@ class MockDB:
             MockDB.MEMORIA[chave_memoria] = [objeto]
 
     @staticmethod
-    def listar(tipo, filtro = None) -> list:
+    def listar(tipo, filtro=None) -> list:
         chave_memoria = tipo.__name__
         memoria = MockDB.MEMORIA.get(chave_memoria, [])
 

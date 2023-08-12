@@ -1,9 +1,11 @@
 from typing import Union
 
 from .abordado import Abordado
+from . import Modelo
 
 
-class VeiculoAbordado:
+class VeiculoAbordado(Modelo):
+    PARAMETROS_DE_IDENTIDADE = ["placa"]
 
     def __init__(self,
                  tipo: str,

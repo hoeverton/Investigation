@@ -18,6 +18,7 @@ class AbordagemControle:
               bairro: str,
               rua: str,
               numeral: str,
+              data: datetime,
               abordados: List[Abordado],
               veiculo_cor: str = None,
               veiculo_modelo: str = None,
@@ -52,7 +53,7 @@ class AbordagemControle:
                       rua=rua,
                       numeral=numeral)
 
-        return Abordagem(data=datetime.now(),
+        return Abordagem(data=data,
                          local=local,
                          abordados=abordados,
                          veiculo=veiculo,
