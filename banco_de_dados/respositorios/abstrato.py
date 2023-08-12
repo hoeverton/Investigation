@@ -26,9 +26,9 @@ class BancoDeDados:
 
 
     @staticmethod
-    def criar_relacao(id_origem, id_destino, **params):
+    def criar_relacao(id_origem, id_destino, is_unique=False, **params):
         for conector in BancoDeDados._CONECTORES_GRAFO:
-            conector.criar_relacao(id_origem, id_destino, **params)
+            conector.criar_relacao(id_origem, id_destino, unique_relation_type_for_source=is_unique, **params)
 
 
 class AbstratoRespoitorio:

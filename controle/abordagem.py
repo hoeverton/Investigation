@@ -5,7 +5,8 @@ from modelo.abordagem import (Abordagem,
                               Local,
                               Abordado,
                               VeiculoAbordado,
-                              BoletimOcorrencia)
+                              BoletimOcorrencia,
+                              Viatura)
 
 
 class AbordagemControle:
@@ -20,6 +21,7 @@ class AbordagemControle:
               numeral: str,
               data: datetime,
               abordados: List[Abordado],
+              viatura_codigo: str,
               veiculo_cor: str = None,
               veiculo_modelo: str = None,
               veiculo_placa: str = None,
@@ -53,7 +55,10 @@ class AbordagemControle:
                       rua=rua,
                       numeral=numeral)
 
+        viatura = Viatura(codigo=viatura_codigo)
+
         return Abordagem(data=data,
+                         viatura=viatura,
                          local=local,
                          abordados=abordados,
                          veiculo=veiculo,

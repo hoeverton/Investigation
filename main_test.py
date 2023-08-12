@@ -1,5 +1,6 @@
 from datetime import datetime
 from simple_graph_sqlite.visualizers import graphviz_visualize
+from simple_graph_sqlite import database as db
 
 if __name__ == "__main__":
     from controle.abordagem import AbordagemControle
@@ -28,7 +29,7 @@ if __name__ == "__main__":
         cidade="Curitiba",
         bairro="CIC",
         rua="R. das Flores",
-        numeral="1010",
+        numeral="10107777",
         abordados=[abordado1, abordado2],
         veiculo_cor='preto',
         veiculo_modelo='passat',
@@ -38,7 +39,8 @@ if __name__ == "__main__":
         veiculo_tipo='passeio',
         bo_numero='1234',
         bo_natureza='2345',
-        data=datetime(2023, 8, 12)
+        data=datetime(2023, 8, 12),
+        viatura_codigo="0001"
     )
 
     repo = AbordagemRepositorio(abordagem)
@@ -48,7 +50,7 @@ if __name__ == "__main__":
         cidade="Curitiba",
         bairro="CIC",
         rua="R. das Flores",
-        numeral="10770",
+        numeral="107750",
         abordados=[abordado2, abordado3],
         veiculo_cor='preto',
         veiculo_modelo='passat',
@@ -58,11 +60,13 @@ if __name__ == "__main__":
         veiculo_tipo='passeio',
         bo_numero='599595',
         bo_natureza='2345',
-        data=datetime(2023, 7, 12)
+        data=datetime(2023, 7, 12),
+        viatura_codigo="0001"
     )
 
     repo = AbordagemRepositorio(abordagem2)
     repo.criar()
 
-    graphviz_visualize('investigation.graph', 'investigation.dot', [abordado2.id, abordado3.id])
-    graphviz_visualize('investigation.graph', 'investigation.dot', [abordado2.id, abordado3.id], format='pdf')
+    nodes = [abordado2.id]
+    graphviz_visualize('investigation.graph', 'investigation.dot', nodes, hide_edge_key=True)
+    graphviz_visualize('investigation.graph', 'investigation.dot', nodes, hide_edge_key=True, format='pdf')

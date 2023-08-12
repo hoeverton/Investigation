@@ -3,8 +3,8 @@ from modelo import Modelo
 from datetime import datetime
 import re
 import copy
+import json
 from sqlite3 import IntegrityError
-from simple_graph_sqlite.visualizers import graphviz_visualize
 
 
 class GraphDB:
@@ -69,10 +69,27 @@ class GraphDB:
                 print(e, str(data))
 
     @staticmethod
-    def criar_relacao(source_id, target_id, **params):
+    def _criar_relacao(source_id, target_id, **params):
         try:
+            print(source_id, target_id, params)
             db.atomic(GraphDB.DB_NAME,
-                      db.connect_nodes(source_id=str(source_id), target_id=str(target_id), properties=params))
+                      db.connect_nodes(source_id=source_id, target_id=target_id, properties=params))
         except IntegrityError as e:
+            print(e)
             if "UNIQUE constraint failed" in str(e):
                 print(e, source_id, target_id)
+
+    @staticmethod
+    def criar_relacao(source_id, target_id, unique_relation_type_for_source=False, **params):
+
+        if unique_relation_type_for_source:
+            relacoes = db.atomic(GraphDB.DB_NAME, db.get_connections(source_id))
+            relacoes_interesse = [relacao for relacao in relacoes if json.loads(relacao[2])['_type'] == params['_type']]
+            remove_edge = lambda sid, tid: lambda cursor: cursor.execute("DELETE FROM edges WHERE source = ? AND target = ?", (sid, tid,))
+
+            for relacao in relacoes_interesse:
+                print('excluindo', str(relacao))
+                db.atomic(GraphDB.DB_NAME, remove_edge(relacao[0], relacao[1]))
+
+        GraphDB._criar_relacao(source_id, target_id, **params)
+
