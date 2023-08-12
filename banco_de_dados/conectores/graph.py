@@ -11,9 +11,6 @@ class GraphDB:
     DB_NAME = "investigation.graph"
     DB_CONNECTION = db.initialize(DB_NAME)
 
-    @staticmethod
-    def atualizar(objeto):
-        GraphDB.criar(objeto)
 
     @staticmethod
     def remover(objeto):
@@ -41,7 +38,7 @@ class GraphDB:
                 (valor, type_name)))
 
     @staticmethod
-    def criar(objeto):
+    def criar_ou_atualizar(objeto):
         type_name = re.sub(r"(?!^[A-Za-z]*)([A-Z]+)", r"_\1", type(objeto).__name__).lower()
         data = {"_type": type_name, **copy.deepcopy(objeto.__dict__)}
 
@@ -49,15 +46,16 @@ class GraphDB:
         for key in data:
             if isinstance(data[key], datetime):
                 data[key] = data[key].strftime("%Y-%m-%d %H:%M:%S")
+
             elif isinstance(data[key], Modelo):
                 remove_keys.append(key)
+
             elif isinstance(data[key], list):
-                model_to_id = []
+
                 for item in data[key]:
                     if isinstance(item, Modelo):
-                        model_to_id.append(item.__dict__)
-                if len(model_to_id) > 0:
-                    remove_keys.append(key)
+                        remove_keys.append(key)
+                        break
 
         for key in remove_keys:
             del data[key]
@@ -69,7 +67,7 @@ class GraphDB:
                 print(e, str(data))
 
     @staticmethod
-    def _criar_relacao(source_id, target_id, **params):
+    def _criar_ou_atualizar_relacao(source_id, target_id, **params):
         try:
             print(source_id, target_id, params)
             db.atomic(GraphDB.DB_NAME,
@@ -80,7 +78,7 @@ class GraphDB:
                 print(e, source_id, target_id)
 
     @staticmethod
-    def criar_relacao(source_id, target_id, unique_relation_type_for_source=False, **params):
+    def criar_ou_atualizar_relacao(source_id, target_id, unique_relation_type_for_source=False, **params):
 
         if unique_relation_type_for_source:
             relacoes = db.atomic(GraphDB.DB_NAME, db.get_connections(source_id))
@@ -91,5 +89,5 @@ class GraphDB:
                 print('excluindo', str(relacao))
                 db.atomic(GraphDB.DB_NAME, remove_edge(relacao[0], relacao[1]))
 
-        GraphDB._criar_relacao(source_id, target_id, **params)
+        GraphDB._criar_ou_atualizar_relacao(source_id, target_id, **params)
 

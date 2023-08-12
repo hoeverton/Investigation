@@ -5,7 +5,7 @@ class MockDB:
     MEMORIA = {}
 
     @staticmethod
-    def atualizar(objeto):
+    def criar_ou_atualizar(objeto):
         MockDB.remover(objeto)
         MockDB.criar(objeto)
 

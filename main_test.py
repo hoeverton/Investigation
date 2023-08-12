@@ -44,7 +44,7 @@ if __name__ == "__main__":
     )
 
     repo = AbordagemRepositorio(abordagem)
-    repo.criar()
+    repo.criar_ou_atualizar()
 
     abordagem2 = AbordagemControle.criar(
         cidade="Curitiba",
@@ -65,7 +65,7 @@ if __name__ == "__main__":
     )
 
     repo = AbordagemRepositorio(abordagem2)
-    repo.criar()
+    repo.criar_ou_atualizar()
 
     nodes = [abordado2.id]
     graphviz_visualize('investigation.graph', 'investigation.dot', nodes, hide_edge_key=True)

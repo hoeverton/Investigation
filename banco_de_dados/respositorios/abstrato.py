@@ -1,10 +1,7 @@
 from banco_de_dados.conectores.graph import GraphDB
 from banco_de_dados.conectores.mockdb import MockDB
-from uuid import uuid4
-import re
 
 from modelo import Modelo
-
 
 
 class BancoDeDados:
@@ -17,18 +14,17 @@ class BancoDeDados:
         return GraphDB.listar(tipo, filtro)
 
     @staticmethod
-    def criar(data: Modelo):
+    def criar_ou_atualizar(data: Modelo):
         if isinstance(data, Modelo):
 
             for conector in BancoDeDados._CONECTORES:
-                conector.criar(data)
+                conector.criar_ou_atualizar(data)
         return data
 
-
     @staticmethod
-    def criar_relacao(id_origem, id_destino, is_unique=False, **params):
+    def criar_ou_atualizar_relacao(id_origem, id_destino, is_unique=False, **params):
         for conector in BancoDeDados._CONECTORES_GRAFO:
-            conector.criar_relacao(id_origem, id_destino, unique_relation_type_for_source=is_unique, **params)
+            conector.criar_ou_atualizar_relacao(id_origem, id_destino, unique_relation_type_for_source=is_unique, **params)
 
 
 class AbstratoRespoitorio:
@@ -36,9 +32,6 @@ class AbstratoRespoitorio:
     def __init__(self, objeto):
         self.objeto = objeto
         self.banco = BancoDeDados
-
-    def atualizar(self):
-        pass
 
     def remover(self):
         pass
@@ -48,5 +41,5 @@ class AbstratoRespoitorio:
         data = self.banco.listar(tipo=type(self.objeto), filtro=filtro)
         print(data)
 
-    def criar(self):
-        self.banco.criar(data=self.objeto)
+    def criar_ou_atualizar(self):
+        self.banco.criar_ou_atualizar(data=self.objeto)
