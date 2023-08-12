@@ -1,5 +1,5 @@
 from datetime import datetime
-
+from simple_graph_sqlite.visualizers import graphviz_visualize
 
 if __name__ == "__main__":
     from controle.abordagem import AbordagemControle
@@ -16,6 +16,12 @@ if __name__ == "__main__":
         nome='hoeverton',
         apelido='eto',
         rg="133323",
+    )
+
+    abordado3 = AbordadoControle.criar(
+        nome='priscila',
+        apelido='pri',
+        rg="1212312",
     )
 
     abordagem = AbordagemControle.criar(
@@ -38,3 +44,25 @@ if __name__ == "__main__":
     repo = AbordagemRepositorio(abordagem)
     repo.criar()
 
+    abordagem2 = AbordagemControle.criar(
+        cidade="Curitiba",
+        bairro="CIC",
+        rua="R. das Flores",
+        numeral="10770",
+        abordados=[abordado2, abordado3],
+        veiculo_cor='preto',
+        veiculo_modelo='passat',
+        veiculo_placa='aab233',
+        veiculo_proprietario='karen',
+        veiculo_ano='1999',
+        veiculo_tipo='passeio',
+        bo_numero='599595',
+        bo_natureza='2345',
+        data=datetime(2023, 7, 12)
+    )
+
+    repo = AbordagemRepositorio(abordagem2)
+    repo.criar()
+
+    graphviz_visualize('investigation.graph', 'investigation.dot', [abordado2.id, abordado3.id])
+    graphviz_visualize('investigation.graph', 'investigation.dot', [abordado2.id, abordado3.id], format='pdf')
