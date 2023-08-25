@@ -9,8 +9,10 @@ class Abordado(Modelo):
                  nome: str,
                  apelido: str,
                  rg: str,
-                 foto: str = None):
+                 foto: str = None,
+                 id=None):
 
+        super().__init__(id=id)
         self.nome = nome
         self.apelido = apelido
         self.rg = rg

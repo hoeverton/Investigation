@@ -13,8 +13,10 @@ class VeiculoAbordado(Modelo):
                  modelo: str,
                  ano:str,
                  cor: str,
-                 proprietario: Union[str, Abordado]):
+                 proprietario: Union[str, Abordado],
+                 id=None):
 
+        super().__init__(id=id)
         self.tipo = tipo
         self.placa = placa
         self.modelo = modelo

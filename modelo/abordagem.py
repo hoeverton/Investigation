@@ -6,22 +6,21 @@ from .abordado import Abordado
 from .veiculo_abordado import VeiculoAbordado
 from .boletim_ocorrencia import BoletimOcorrencia
 from .local import Local
-from .viatura import Viatura
 from . import Modelo
 
 
 class Abordagem(Modelo):
-    PARAMETROS_DE_IDENTIDADE = ["data", "viatura"]
+    PARAMETROS_DE_IDENTIDADE = ["data", "local"]
 
     def __init__(self,
                  data: datetime,
-                 viatura: Viatura,
                  local: Local,
                  abordados: List[Abordado],
                  veiculo: VeiculoAbordado = None,
-                 boletim_ocorrencia: BoletimOcorrencia = None):
+                 boletim_ocorrencia: BoletimOcorrencia = None,
+                 id=None):
 
-        self.viatura = viatura
+        super().__init__(id=id)
         self.local = local
         self.data = data
         self.abordados = abordados

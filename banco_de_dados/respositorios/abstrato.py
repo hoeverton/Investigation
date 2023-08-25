@@ -26,20 +26,22 @@ class BancoDeDados:
         for conector in BancoDeDados._CONECTORES_GRAFO:
             conector.criar_ou_atualizar_relacao(id_origem, id_destino, unique_relation_type_for_source=is_unique, **params)
 
+    @staticmethod
+    def listar_relacoes(id_no_origem):
+        for conector in BancoDeDados._CONECTORES_GRAFO:
+            return conector.listar_relacoes(id_no_origem=id_no_origem)
+
 
 class AbstratoRespoitorio:
+    banco = BancoDeDados
 
-    def __init__(self, objeto):
-        self.objeto = objeto
-        self.banco = BancoDeDados
-
-    def remover(self):
+    def remover(self, objeto):
         pass
 
-    def carregar(self):
-        filtro = f"id == '{self.objeto.id}'"
-        data = self.banco.listar(tipo=type(self.objeto), filtro=filtro)
+    def carregar(self, objeto):
+        filtro = f"id == '{objeto.id}'"
+        data = self.banco.listar(tipo=type(objeto), filtro=filtro)
         print(data)
 
-    def criar_ou_atualizar(self):
-        self.banco.criar_ou_atualizar(data=self.objeto)
+    def criar_ou_atualizar(self, objeto):
+        self.banco.criar_ou_atualizar(data=objeto)

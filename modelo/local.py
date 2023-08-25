@@ -8,8 +8,10 @@ class Local(Modelo):
                  cidade: str,
                  bairro: str,
                  rua: str,
-                 numeral: str):
+                 numeral: str,
+                 id=None):
 
+        super().__init__(id=id)
         self.cidade = cidade
         self.bairro = bairro
         self.rua = rua

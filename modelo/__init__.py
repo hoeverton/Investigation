@@ -11,13 +11,17 @@ class PostInitCaller(type):
 class Modelo(metaclass=PostInitCaller):
     PARAMETROS_DE_IDENTIDADE = []
 
+    def __init__(self, id=None):
+        self.id = id
+
     def __post_init__(self):
-        _identidade = []
-        for parametro in self.PARAMETROS_DE_IDENTIDADE:
-            valor = getattr(self, parametro)
-            if isinstance(valor, Modelo):
-                valor = valor.id
+        if getattr(self, "id", None) is None:
+            _identidade = []
+            for parametro in self.PARAMETROS_DE_IDENTIDADE:
+                valor = getattr(self, parametro)
+                if isinstance(valor, Modelo):
+                    valor = valor.id
 
-            _identidade.append(str(valor))
+                _identidade.append(str(valor))
 
-        self.id = hashlib.md5("|".join(_identidade).encode()).hexdigest()
+            self.id = hashlib.md5("|".join(_identidade).encode()).hexdigest()

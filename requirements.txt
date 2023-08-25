@@ -1,2 +1,2 @@
-tk
+tk==0.1.0
 simple-graph-sqlite==2.1.0

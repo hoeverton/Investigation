@@ -39,12 +39,10 @@ if __name__ == "__main__":
         veiculo_tipo='passeio',
         bo_numero='1234',
         bo_natureza='2345',
-        data=datetime(2023, 8, 12),
-        viatura_codigo="0001"
-    )
+        data=datetime(2023, 8, 12))
 
-    repo = AbordagemRepositorio(abordagem)
-    repo.criar_ou_atualizar()
+    repo = AbordagemRepositorio()
+    repo.criar_ou_atualizar(objeto=abordagem)
 
     abordagem2 = AbordagemControle.criar(
         cidade="Curitiba",
@@ -60,12 +58,10 @@ if __name__ == "__main__":
         veiculo_tipo='passeio',
         bo_numero='599595',
         bo_natureza='2345',
-        data=datetime(2023, 7, 12),
-        viatura_codigo="0001"
-    )
+        data=datetime(2023, 7, 12))
 
-    repo = AbordagemRepositorio(abordagem2)
-    repo.criar_ou_atualizar()
+    repo = AbordagemRepositorio()
+    repo.criar_ou_atualizar(objeto=abordagem2)
 
     nodes = [abordado2.id]
     graphviz_visualize('investigation.graph', 'investigation.dot', nodes, hide_edge_key=True)

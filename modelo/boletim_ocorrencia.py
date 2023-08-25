@@ -6,7 +6,9 @@ class BoletimOcorrencia(Modelo):
 
     def __init__(self,
                  numero: str,
-                 natureza: str):
+                 natureza: str,
+                 id=None):
 
+        super().__init__(id=id)
         self.numero = numero
         self.natureza = natureza

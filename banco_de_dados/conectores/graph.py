@@ -30,12 +30,20 @@ class GraphDB:
         }
         operador = operador_mapper.get(operador, operador)
 
+        search_clauses = [
+                db._generate_clause(key=parametro, predicate=operador),
+                db._generate_clause(key="_type", predicate="=", joiner="AND")]
+
         return db.atomic(
             GraphDB.DB_NAME,
-            db.find_nodes([
-                db._generate_clause(key=parametro, predicate=operador),
-                db._generate_clause(key="_type", predicate="=", joiner="AND")],
-                (valor, type_name)))
+            db.find_nodes(search_clauses, (valor, type_name)))
+
+    @staticmethod
+    def listar_relacoes(id_no_origem):
+        return db.traverse(db_file=GraphDB.DB_NAME,
+                           neighbors_fn=db.find_outbound_neighbors,
+                           src=id_no_origem,
+                           with_bodies=True)
 
     @staticmethod
     def criar_ou_atualizar(objeto):
